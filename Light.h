@@ -62,6 +62,7 @@ class Light
     void setCurrent(byte desiredCurrent);
     /// Set the output current by requesting a set brightness
     void setBrightness(int nominalBrightness, byte nominalCurrent, int desiredBrightness);
+    void off(void) {dim(0);}
     /// Returns the set current
     byte getDesiredCurrent(void);
 

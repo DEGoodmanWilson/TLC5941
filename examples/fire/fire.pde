@@ -1,5 +1,5 @@
 #include <Controller.h>
-#include <FX.h>
+#include <Light.h>
 #include <TLC5941.h>
 #include <Fire.h>
 
@@ -18,7 +18,7 @@ void setup()
     lights[i].off();
     board.addLight(i,&lights[i]);
   }
-  fire.addLight(&lights[0],&lights[1]);
+  fire.addLights(2,lights);
 
   c.addBoard(&board);
   c.setup();

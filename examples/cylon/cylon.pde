@@ -17,14 +17,13 @@ void setup()
   {
     lights[i].setCurrent(6);
     board1.addLight(i,&lights[i]);
-    cylon.addLight(i,&lights[i]);
   }
   for(int i = 8; i<16; ++i)
   {
     lights[i].setCurrent(2);
     board2.addLight(i,&lights[i]);
-    cylon.addLight(i,&lights[i]);  
   }
+  cylon.addLights(16,lights);
 
   cylon.setTimings(100, 200, 32);
 
