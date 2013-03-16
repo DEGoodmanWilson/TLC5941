@@ -20,7 +20,7 @@ TLC5941::TLC5941(Controller *c)
 
 void TLC5941::setup(void)
 {
-	//TODO!! anything need to be done here? Don't think so?
+	//TODO!! anything need to be done here? Don't think so.
 	if(_nextBoard != NULL)
 		_nextBoard->setup();
 }

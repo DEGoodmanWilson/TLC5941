@@ -1,9 +1,13 @@
 #ifndef __CYLON_H__
 #define __CYLON_H__
 
-#include "WProgram.h"
+#include "Arduino.h"
 #include "Light.h"
 
+/////////////
+/// A class for using the outputs on a single TLC5941 as a Larson Scanner. Takes
+/// advantage of the dimming features of the chip to create a convincing effect of movement.
+/////////////
 class Cylon
 {
   public:

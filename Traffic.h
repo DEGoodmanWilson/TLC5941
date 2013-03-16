@@ -1,6 +1,10 @@
 #ifndef __TRAFFIC_H__
 #define __TRAFFIC_H__
 
+#include "Arduino.h"
+#include "Light.h"
+
+
 #define BLINK_TIME 300
 
 #define NS_GREEN_LIGHT 0
@@ -60,9 +64,6 @@
 #define NS_PED_BLINKING 192
 #define EW_PED_BLINKING 49152
 
-
-#include "WProgram.h"
-#include "Light.h"
 
 //////////////////////////////
 /// Manages a simple traffic light with three aspects in two directions.

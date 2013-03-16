@@ -1,7 +1,7 @@
 #ifndef __CONTROLLER_H__
 #define __CONTROLLER_H__
 
-#include "WProgram.h"
+#include "Arduino.h"
 #include "TLC5941.h"
 
 class TLC5941;

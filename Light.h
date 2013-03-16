@@ -1,7 +1,7 @@
 #ifndef __FX_H__
 #define __FX_H__
 
-#include "WProgram.h"
+#include "Arduino.h"
 #include "Controller.h"
 
 #define FULL_ON 32767
@@ -9,27 +9,20 @@
 
 class Controller;
 
-/// The FX class is an abstract class for handling lights and lighting effects.
+/// The Light class is an abstract class for handling lights and lighting effects.
 
 //////////////////////////////////////////////////
-/// The FX class provides the basic functionality for manipulating lights.
-/// The class is the base class for Light, and for every special
-/// effect in the library. The FX class does not provide a method
-/// for storing references to other FX instances; this will have to be
-/// added on an adhoc basis to derived classes. See some of the included
-/// examples for suggestions.
+/// The Light class provides the basic functionality for manipulating individual
+/// output channels on each TLC5941 chip.
 ///
-/// All FX instances must be assigned to the Controller via Controller::addFX().
+/// Each output channel on a TLC5941 that has lights attached requires one
+/// and only one instance of a Light class. This class adjusts the current
+/// output the TLC5941 for that channel using dot correction according to the
+/// electrical specifications of what is actually attached.
 ///
-/// FX instances are stored in a singly-linked list in the Controller, which
-/// ensures that the FX::setup() and FX::update() functions get called
-/// at the right moments.
-///
-/// Implementing a deived class requires that you provide some method for
-/// assigning one or more FX instances to be controlled. The base class provides
-/// no such functionality, for the sake of space. (And because the Light class,
-/// which is derived from FX, doesn't need it.)
-//////////////////////////////////////////////////
+/// All Lights must be assigned to a TLC5941 instance via TLC5941:addLight().
+//////////////////////////////
+
 class Light
 {
   public:
@@ -73,16 +66,4 @@ class Light
     int _fade_target;
     float _fade_rate;
 };
-
-/// A class specifically for representing a single output on a TLC5941
-
-//////////////////////////////
-/// Each output channel on a TLC5941 that has lights attached requires one
-/// and only one instance of a Light class. This class adjusts the current
-/// output the TLC5941 for that channel using dot correction according to the
-/// electrical specifications of what is actually attached.
-///
-/// All Lights must be assigned to a TLC5941 instance via TLC5941:addLight().
-//////////////////////////////
-
 #endif
