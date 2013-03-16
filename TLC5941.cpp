@@ -4,7 +4,6 @@ TLC5941::TLC5941(void)
 {
 	_controller = NULL;
 	_nextBoard = NULL;
-        //_max_current = 80;
 	for(int i = 0; i < 16; ++i)
 		_lights[i] = NULL;
 }
@@ -13,7 +12,6 @@ TLC5941::TLC5941(Controller *c)
 {
 	_controller = c;
 	_nextBoard = NULL;
-        //_max_current = 80;
 	for(int i = 0; i < 16; ++i)
 		_lights[i] = NULL;
 }
@@ -96,13 +94,3 @@ void TLC5941::addBoard(TLC5941 *next)
 		_nextBoard = next;
 	else _nextBoard->addBoard(next);
 }
-
-//void TLC5941::setMaxCurrent(byte current)
-//{
-//  _max_current = current;
-//}
-
-//void TLC5941::setCurrentResistor(int resistance)
-//{
-//  _max_current = 39.06/resistance;
-//}

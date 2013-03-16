@@ -14,16 +14,17 @@ unsigned int time_diff;
 
 void setup()
 {
+  //set up 16 LEDs, max 2mA current, off by default
   for(int i = 0; i <16; ++i)
   {
     lights[i].setCurrent(2);
     lights[i].dim(0);
-    board.addLight(i,&lights[i]);
-    tc.addLight(i, &lights[i]);
-    //tc.setState(i,1<<i,1);
+    board.addLight(i,&lights[i]); //add to board
+    tc.addLight(i, &lights[i]); //add to traffic controller class
   }
-  //set up traffic controller
   
+  //set up traffic controller  
+  //Add aspects (light configurations) to animation, with timings in seconds
   tc.addState(ASPECT_NS_GREEN_PED_GREEN,10);
   tc.addState(ASPECT_NS_GREEN_PED_BLINK,4);
   tc.addState(ASPECT_NS_YELLOW_PED_BLINK,5);
@@ -42,7 +43,10 @@ void loop()
 {
   cur_time = millis();
   time_diff = cur_time - prev_time;
+  //traffic controller class needs to know how much time passed since the last update
+  // to ensure a consistent animation speed
   tc.update(time_diff);
+  //update the controller; will automatically update each board assigned
   c.update();
   prev_time = cur_time;
 }

@@ -28,13 +28,10 @@ class TLC5941
     void setup(void); //called once in the setup() function
     void update(void); //called repeatedly
 
-    void setDotCorrection(void); //commit LED current limiting factors
+    void setDotCorrection(void); //commit LED current limiting factors, called by Controller
 
     void addLight(int pos, Light *l); //must be called for each output channel actually in use
     void addBoard(TLC5941 *next); //called by Controller::addBoard() to construct the linked list
-
-    void setMaxCurrent(byte current); //set the maximum allowable current globally for entire board
-    void setCurrentResistor(int resistance); //if a current-setting resistor is used, you must register the value here. Require for current limitation calculations
 
   private:
     Light *_lights[16];
