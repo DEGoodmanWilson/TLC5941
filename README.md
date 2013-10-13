@@ -6,3 +6,5 @@ The library is broken into four main classes: The Controller class, which handle
 
 ## Caveats
 This is one of my earlier efforts at writing low-level embedded code. As such, there are some aspects which may raise some eyebrows. Rather than hacking the SPI interface, which would only make a certain amount of sense given the TLC594x's idiosyncratic serial interface, this code relies on brute force bit-banging to achieve results. That said, results are indeed achieved.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/DEGoodmanWilson/tlc5941/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
