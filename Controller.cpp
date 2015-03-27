@@ -1,6 +1,18 @@
 #include "Controller.h"
 #include "ISR.h"
 
+uint32_t time_delta_32(uint32_t curtime, uint32_t prevtime)
+{
+    if (curtime < prevtime) //we have a rollover situation
+    {
+        return (0xFFFFFFFF - prevtime) +curtime;
+    }
+    else
+    {
+        return curtime - prevtime;
+    }
+}
+
 Controller::Controller(void)
 {
   //set up necessary pins for output

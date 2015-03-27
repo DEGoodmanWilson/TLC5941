@@ -28,8 +28,12 @@ void Traffic::addState(word aspect, byte duration)
   ++_max_state;
 }
 
-void Traffic::update(unsigned int time_diff)
+void Traffic::update()
 {
+  unsigned int cur_time = millis();
+  unsigned int time_diff = time_delta_32(cur_time, _prev_time);
+  _prev_time = cur_time;
+
   //blink light if necessary
   if(_blinking&(1<<0) || _blinking&(1<<2)) //is NS or EW blink bit set?
   {

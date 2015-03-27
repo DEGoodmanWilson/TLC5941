@@ -14,12 +14,15 @@ void Fire::addLights(byte howmany, Light *light_array)
   _num_lights = howmany;
 }
 
-void Fire::update(unsigned int time_diff)
+void Fire::update()
 {
   int permute;
   int permutetime;
   int i;
   
+  unsigned int cur_time = millis();
+  unsigned int time_diff = time_delta_32(cur_time, _prev_time);
+  _prev_time = cur_time;
   _elapsed_time += time_diff;
   //do we change the glow? allow a random amount of time to pass
   if(_elapsed_time >= random(200,3001))

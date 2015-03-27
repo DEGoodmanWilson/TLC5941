@@ -76,13 +76,14 @@ class Traffic
     void addLight(byte which, Light *light);
     void addState(word aspect, byte duration);
 
-    void update(unsigned int time_diff);
+    void update();
 
   private:
     byte _state;
     byte _state_timings[16]; //these need to be dynamic!
     word _state_order[16]; //really.
     Light *_lights[16];
+    unsigned int _prev_time;
     unsigned int _elapsed_time;
     unsigned int _blink_time;
     byte _blinking;

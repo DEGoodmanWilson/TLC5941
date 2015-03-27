@@ -26,8 +26,11 @@ void Cylon::setTimings(unsigned int fadein, unsigned int fadeout, float rate)
   _dwell_t = (unsigned int)(1000./rate);
 }
 
-void Cylon::update(unsigned int time_diff)
+void Cylon::update()
 {
+  unsigned int cur_time = millis();
+  unsigned int time_diff = time_delta_32(cur_time, _prev_time);
+  _prev_time = cur_time;
   _elapsed_time += time_diff;
   if(_elapsed_time  > _dwell_t) //is it time to move on?
   {

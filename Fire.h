@@ -18,11 +18,12 @@ class Fire
 
     void addLights(byte homany, Light *light_array);
 
-    void update(unsigned int time_diff);
+    void update();
 
   private:
     Light *_lights;
     byte _num_lights;
+    unsigned int _prev_time;
     unsigned long _elapsed_time;
 };
 

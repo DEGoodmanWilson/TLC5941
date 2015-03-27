@@ -7,6 +7,8 @@
 
 class TLC5941;
 
+uint32_t time_delta_32(uint32_t curtime, uint32_t prevtime);
+
 /// The Controller class handles all low-level hardware stuff.
 
 //////////////////////////////////////////////////
