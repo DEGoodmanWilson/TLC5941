@@ -39,7 +39,7 @@ void TLC5941::update(void)
     if(_lights[n] == NULL)
       GS = 0;
     else {
-      GS = word(((float)_lights[n]->getDim()/32767.0) * 4095);
+      GS = (_lights[n]->getDim() * 4095) / 32767;
     }
     _controller->MSBShiftOut(GS,12);
   }
