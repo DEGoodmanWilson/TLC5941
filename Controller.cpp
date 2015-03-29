@@ -1,5 +1,5 @@
 #include "Controller.h"
-#include "ISR.h"
+#include "LEDISR.h"
 
 uint32_t time_delta_32(uint32_t curtime, uint32_t prevtime)
 {
@@ -42,6 +42,10 @@ void Controller::addBoard(TLC5941 *board)
 
 void Controller::setup(void)
 {
+
+  //set up the ISR stuff
+  configure_GSCLK_output();
+
     //tell all Boards to setup!
     if(_firstBoard != NULL)
         _firstBoard->setup();
@@ -70,6 +74,9 @@ void Controller::setup(void)
   pulse_pin(XLAT_PORT, XLAT_PIN);
   pin_low(BLANK_PORT, BLANK_PIN);
   pulse_pin(SCLK_PORT, SCLK_PIN); //the extra SCLK pulse
+
+  //enable the clock output
+  enable_GSCLK_output();
 }
 
 void Controller::update(void)
@@ -83,20 +90,20 @@ void Controller::update(void)
     if(_firstBoard != NULL)
     {
         _firstBoard->update();
-        pin_high(BLANK_PORT, BLANK_PIN);
+        //pin_high(BLANK_PORT, BLANK_PIN);
         pulse_pin(XLAT_PORT, XLAT_PIN);
-        pin_low(BLANK_PORT, BLANK_PIN);
+        //pin_low(BLANK_PORT, BLANK_PIN);
     }
     else
     {
-        pulse_pin(BLANK_PORT, BLANK_PIN); //resets the GSCLK counter
+        //pulse_pin(BLANK_PORT, BLANK_PIN); //resets the GSCLK counter
     }
 
-  // 2. flash the GSCLK a whole lot!
-  for(int i = 0; i < 4096; ++i)
-  {
-    pulse_pin(GSCLK_PORT,GSCLK_PIN);
-  }
+  // // 2. flash the GSCLK a whole lot!
+  // for(int i = 0; i < 4096; ++i)
+  // {
+  //   pulse_pin(GSCLK_PORT,GSCLK_PIN);
+  // }
 }
 
 void Controller::MSBShiftOut(word w, byte length)

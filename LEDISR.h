@@ -1,5 +1,8 @@
 #include <avr/io.h>
 
+#ifndef __LEDISR_H__
+#define __LEDISR_H__
+
 /*
    The following def's show which Arduino pins this library expects to be
    used with each input to the TLC5941. If any of these are changed, please
@@ -43,3 +46,5 @@
 void configure_GSCLK_output(void);
 void enable_GSCLK_output(void);
 void disable_GSCLK_output(void);
+
+#endif //#ifndef __LEDISR_H__

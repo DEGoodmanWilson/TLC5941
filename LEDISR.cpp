@@ -1,5 +1,5 @@
-#include "ISR.h"
 #include <avr/interrupt.h>
+#include "LEDISR.h"
 
 /// This is the Interrupt Service Routine (ISR) for Timer1 compare match.
 uint16_t gsclk_counter;
@@ -30,6 +30,8 @@ ISR(TIMER1_COMPA_vect)
 
 void configure_GSCLK_output(void)
 {
+  disable_GSCLK_output();
+
   //Set the OC1A and OC1B pins (Timer1 output pins A and B) to output mode
   //On Arduino UNO, etc, OC1A is Port B/Pin 1 and OC1B Port B/Pin 2
   
@@ -48,13 +50,13 @@ void configure_GSCLK_output(void)
 
 void enable_GSCLK_output(void)
 {
-  set_low(BLANK_PORT, BLANK_PIN);
+  pin_low(BLANK_PORT, BLANK_PIN);
   TIMSK1 |= (1<<OCIE1A);
 }
 
 void disable_GSCLK_output(void)
 {
   TIMSK1 &= ~(1<<OCIE1A);
-  set_high(BLANK_PORT, BLANK_PIN);
+  pin_high(BLANK_PORT, BLANK_PIN);
   gsclk_counter = 0;
 }
