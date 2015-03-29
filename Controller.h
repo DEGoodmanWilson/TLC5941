@@ -18,27 +18,27 @@ class TLC5941;
 #define SIN 6
 #define MODE 7
 
-#define GSCLK_PIN PD2
+#define GSCLK_PIN PIND2
 #define GSCLK_DDR DDRD
 #define GSCLK_PORT PORTD
 
-#define BLANK_PIN PD3
+#define BLANK_PIN PIND3
 #define BLANK_DDR DDRD
 #define BLANK_PORT PORTD
 
-#define XLAT_PIN PD4
+#define XLAT_PIN PIND4
 #define XLAT_DDR DDRD
 #define XLAT_PORT PORTD
 
-#define SCLK_PIN PD5
+#define SCLK_PIN PIND5
 #define SCLK_DDR DDRD
 #define SCLK_PORT PORTD
 
-#define SIN_PIN PD6
+#define SIN_PIN PIND6
 #define SIN_DDR DDRD
 #define SIN_PORT PORTD
 
-#define MODE_PIN PD7
+#define MODE_PIN PIND7
 #define MODE_PORT PORTD
 
 #define pulse_pin(port, pin)   port |= _BV(pin); port &= ~_BV(pin)
