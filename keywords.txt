@@ -1,13 +1,13 @@
 #datatypes
 
 FXController	KEYWORD1
-FX		KEYWORD1
-Light		KEYWORD1
-TLC5941		KEYWORD1
+FX	KEYWORD1
+Light	KEYWORD1
+TLC5941	KEYWORD1
 
 #methods and functions
 
-setup		KEYWORD2
-update		KEYWORD2
+setup	KEYWORD2
+update	KEYWORD2
 addBoard	KEYWORD2
-addFX		KEYWORD2
+addFX	KEYWORD2
